@@ -1,0 +1,25 @@
+<div id="page">
+  <% if session[:password] %>
+    <div id="existing-session">
+      Ready to generate secure QR codes and scan existing QR codes using the currently set password.
+    </div>
+    <div id="generate">
+      <%= form_tag(encode_path, :method => :get) do %>
+        <%= label_tag "Text to encode" %>
+        <%= text_field_tag "p" %>
+        <%= submit_tag "Encode" %>
+      <% end %>
+    </div>
+    <div id="end-session">
+      <%= button_to "Clear password", session_path, :method => "delete" %>
+    </div>
+  <% else %>
+    <div id="start-session">
+      <%= form_tag(session_path, :method => :put) do %>
+        <%= label_tag "Password" %>
+        <%= text_field_tag "password" %>
+        <%= submit_tag "Set password" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
