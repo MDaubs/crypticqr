@@ -10,7 +10,11 @@ class QrController < ApplicationController
 
   def decode
     if session[:password]
-      @qr_output = decrypt(Base64.urlsafe_decode64(params[:c]))
+      begin
+        @qr_output = decrypt(Base64.urlsafe_decode64(params[:c]))
+      rescue OpenSSL::Cipher::CipherError => e
+        raise "Your current key cannot decrypt this QR code."
+      end
     else
       raise "You must specify a password before encoding a QR code."
     end
