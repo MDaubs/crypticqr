@@ -5,3 +5,97 @@
  *= require_self
  *= require_tree . 
 */
+
+body {
+  line-height: 20px;
+  font-size: 15px;
+  background-color: #eee;
+}
+
+#page {
+  margin: 40px auto;
+  width: 700px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+h1 {
+  line-height: 40px;
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  line-height: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0 0 0;
+  padding: 10px 0;
+}
+
+#tagline {
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.instructions {
+  margin-bottom: 20px;
+}
+
+#start-session form label {
+  padding-left: 200px;
+  font-weight: bold;
+}
+
+#generate form label {
+  padding-left: 180px;
+  font-weight: bold;
+}
+
+#generate form input[type='text'],
+#start-session form input[type='text'] {
+  border: 1px solid #ccc;
+  height: 20px;
+  margin: 0;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.qr-code {
+  position: relative;
+  height: 150px;
+}
+
+.qr-code pre {
+  margin: 0;
+  font-size: 10px;
+}
+
+.qr-code .plaintext {
+  position: absolute;
+  top: 60px;
+  left: 170px;
+}
+
+.qr-code .ciphertext {
+  position: absolute;
+  top: 20px;
+  left: 170px;
+}
+
+.qr-code .encoded {
+  position: absolute;
+  top: 100px;
+  left: 170px;
+}
+
+.qr-code img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

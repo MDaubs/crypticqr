@@ -1,1 +1,15 @@
-<img src='http://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= @qr_url %>'/>
+<div class="qr-code">
+  <div class="plaintext">
+    Plaintext:
+    <pre><%= params[:p] %></pre>
+  </div>
+  <div class="ciphertext">
+    Ciphertext:
+    <pre><%= @qr_input %></pre>
+  </div>
+  <div class="encoded">
+    Encoded in QR code:
+    <pre><%= @qr_url %></pre>
+  </div>
+  <img src='http://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= @qr_url %>'/>
+</div>

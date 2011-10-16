@@ -1,28 +1,40 @@
-<div id="page">
-  <% if session[:password] %>
-    <div id="existing-session">
-      Ready to generate secure QR codes and scan existing QR codes using the currently set password.
+<% if session[:password] %>
+  <div id="existing-session">
+    <h2>Password saved</h2>
+    <div class="instructions">
+      Ready to generate secure QR codes and scan existing QR codes.
     </div>
-    <div id="generate">
-      <%= form_tag(encode_path, :method => :get) do %>
-        <%= label_tag "Text to encode" %>
-        <%= text_field_tag "p" %>
-        <%= submit_tag "Encode" %>
-      <% end %>
+    <%= button_to "Clear password", session_path, :method => "delete" %>
+  </div>
+  <div id="generate">
+    <h2>Generate a single QR code</h2>
+    <div class="instructions">
+      The text below will be encrypted using the current saved password and encoded into a QR code.
     </div>
-    <div id="end-session">
-      <%= button_to "Clear password", session_path, :method => "delete" %>
+    <%= form_tag(encode_path, :method => :get) do %>
+      <%= label_tag "Text to encode:" %>
+      <%= text_field_tag "p" %>
+      <%= submit_tag "Encode" %>
+    <% end %>
+    <h2>Generate QR codes through our API</h2>
+    <div class="instructions">
+      <pre><%= h encode_url + "?p={plaintext}" %></pre>Will return an encrypted QR code for {plaintext} using the current password.
     </div>
-  <% else %>
-    <div id="start-session">
-      <div class="instructions">
-        Let's get started.  Enter a password to use for protecting your QR codes.  This password will be needed to decode any QR codes generated.  Share the password only with people who should be allowed to read the QR codes you intend to create.
-      </div>
-      <%= form_tag(session_path, :method => :put) do %>
-        <%= label_tag "Password" %>
-        <%= text_field_tag "password" %>
-        <%= submit_tag "Set password" %>
-      <% end %>
+    <h2>Generate multiple QR codes</h2>
+    <div class="instructions">
+      Have a bunch of codes to generate?  Paste them in to the box below.  One line per QR code.
     </div>
-  <% end %>
-</div>
+  </div>
+<% else %>
+  <div id="start-session">
+    <div class="instructions">
+      <h2>Let's get started</h2>
+      Enter a password to use for protecting your QR codes.  This password will be needed to decode any QR codes generated.  Share the password only with people who should be allowed to read the QR codes you intend to create.
+    </div>
+    <%= form_tag(session_path, :method => :put) do %>
+      <%= label_tag "Password:" %>
+      <%= text_field_tag "password" %>
+      <%= submit_tag "Set password" %>
+    <% end %>
+  </div>
+<% end %>
