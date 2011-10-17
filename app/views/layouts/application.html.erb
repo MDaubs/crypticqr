@@ -10,6 +10,9 @@
   <div id="page">
     <h1>Cryptic QR</h1>
     <div id="tagline">Secure QR codes</div>
+    <% if flash.alert %>
+      <div id="alert"><%= flash.alert %></div>
+    <% end %>
     <%= yield %>
   </div>
 </body>

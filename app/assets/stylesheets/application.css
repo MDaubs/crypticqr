@@ -99,3 +99,13 @@ h2 {
   top: 0;
   left: 0;
 }
+
+.result {
+  font-size: 18px;
+}
+
+#alert {
+  background-color: #900;
+  padding: 10px;
+  color: #fff;
+}
