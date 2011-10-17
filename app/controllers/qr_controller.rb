@@ -12,7 +12,8 @@ class QrController < ApplicationController
     if session[:password]
       begin
         @qr_output = decrypt(Base64.urlsafe_decode64(params[:c]))
-      rescue OpenSSL::Cipher::CipherError => e
+      rescue
+      #rescue OpenSSL::Cipher::CipherError => e
         flash.now[:alert] = "Oops!  Your current key cannot decrypt this QR code."
       end
     else
