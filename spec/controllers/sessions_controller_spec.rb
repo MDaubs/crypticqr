@@ -10,6 +10,16 @@ describe SessionsController do
     it { should redirect_to root_url }
   end
 
+  describe "POST update", "blank password" do
+    before do
+      post :update, :password => ""
+    end
+
+    specify { session[:password].should be_nil }
+    specify { flash[:alert].should_not be_nil }
+    it { should redirect_to root_url }
+  end
+
   describe "DELETE destroy" do
     before do
       session[:password] = "1234"
