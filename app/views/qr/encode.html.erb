@@ -9,7 +9,7 @@
   </div>
   <div class="encoded">
     Encoded in QR code:
-    <pre><%= @qr_url %></pre>
+    <pre><%= link_to @qr_url, @qr_url %></pre>
   </div>
   <img src='http://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= CGI.escape @qr_url %>'/>
 </div>

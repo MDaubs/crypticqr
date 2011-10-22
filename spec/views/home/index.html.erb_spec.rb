@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe "home/index.mobile.erb" do
+describe "home/index.html.erb" do
 end
