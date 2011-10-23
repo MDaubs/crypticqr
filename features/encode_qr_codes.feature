@@ -10,6 +10,11 @@ Feature: Encode and decode QR codes
     When  I go to the decode page for a QR code generated with the password "1234" and text "Hello World" with no session password
     Then  I get an error
 
+  Scenario: A visitor who has not set a session password is taken to the decoded QR code after entering the correct password
+    When  I go to the decode page for a QR code generated with the password "1234" and text "Hello World" with no session password
+    And   I set a new session password
+    Then  I see "Hello World"
+
   Scenario: A visitor cannot decode a QR code that doesn't match the session password
     When  I go to the decode page for a QR code generated with the password "1234" and text "Hello World" with the session password "5432"
     Then  I get an error

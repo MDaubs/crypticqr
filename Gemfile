@@ -21,6 +21,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'cucumber-rails'
   gem 'launchy'
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'growl_notify'
 end
 
 # To use ActiveModel has_secure_password

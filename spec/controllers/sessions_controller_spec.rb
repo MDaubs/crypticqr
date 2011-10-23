@@ -20,6 +20,15 @@ describe SessionsController do
     it { should redirect_to root_url }
   end
 
+  describe "POST update", "and decode" do
+    before do
+      session[:decode_qr_code] = "1234"
+      post :update, :password => "5678"
+    end
+
+    it { should redirect_to "#{decode_url}?c=1234" }
+  end
+
   describe "DELETE destroy" do
     before do
       session[:password] = "1234"

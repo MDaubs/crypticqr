@@ -6,7 +6,11 @@ class SessionsController < ApplicationController
       session[:password] = nil
       flash[:alert] = "You must specify a non-blank password."
     end
-    redirect_to root_url
+    if session[:decode_qr_code]
+      redirect_to "#{decode_url}?c=#{session.delete(:decode_qr_code)}"
+    else
+      redirect_to root_url
+    end
   end
 
   def destroy
